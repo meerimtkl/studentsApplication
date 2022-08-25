@@ -1,5 +1,6 @@
 package kg.megacom.students1.models;
 
+import kg.megacom.students1.models.enums.StudentStatus;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
@@ -23,4 +24,6 @@ public class StudentGroups {
     @ManyToOne
     @JoinColumn(name = "student_id")
     Student student;
+    @Enumerated(value = EnumType.STRING)
+    private StudentStatus status;
 }

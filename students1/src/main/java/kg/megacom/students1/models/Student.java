@@ -19,4 +19,6 @@ public class Student {
         String title;
         @Enumerated(value = EnumType.STRING)
         StudentStatus status;
+        @Column(name="is_Deleted",columnDefinition = "false")
+        private boolean isDeleted;//if true запись удалена
 }

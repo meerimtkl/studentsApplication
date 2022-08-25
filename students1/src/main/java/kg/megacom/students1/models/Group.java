@@ -1,5 +1,6 @@
 package kg.megacom.students1.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
@@ -15,8 +16,9 @@ public class Group {
         @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     String name;
-
+    @JsonFormat(pattern = "yyyy-MM-dd")
     Date startDate;
+    @JsonFormat(pattern = "yyyy-MM-dd")
     Date endDate;
 
     @ManyToOne
