@@ -23,20 +23,20 @@ public class StudentController {
     public StudentDto createStudent(@RequestBody Student student){
         return studentService.createStudent(student);
     }
-//    @GetMapping("/all")
-//    public List<StudentDto> findAll(){return studentService.findAll();}
-//    @PutMapping("/update")
-//    public Student updateStudent(@RequestParam Long id,@RequestParam String title){
-//        return studentService.update(id,title);
-//
-//    }
-//
-//    @DeleteMapping("/delete")
-//    Student delete(@RequestParam Long id){
-//       return studentService.delete(id);
-//
-//    }
-//
-//    @GetMapping("/findAllNotDeleted")
-//    public List<Student>findAllNotDeleted(){return studentService.findAllNotDeleted();}
+ @GetMapping("/all")
+    public List<StudentDto> findAll(){return studentService.findAll();}
+    @PutMapping("/update")
+    public Student updateStudent(@RequestParam Long id,@RequestParam String title){
+      return studentService.update(id,title);
+
+ }
+
+  @DeleteMapping("/delete")
+ Student delete(@RequestParam Long id){
+      return studentService.delete(id);
+
+  }
+
+  @GetMapping("/findAllNotDeleted")
+ public List<Student>findAllNotDeleted(){return studentService.findAllNotDeleted();}
 }

@@ -2,6 +2,7 @@ package kg.megacom.students1.services.impl;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import kg.megacom.students1.mappers.LessonMapper;
+import kg.megacom.students1.models.Group;
 import kg.megacom.students1.models.Lesson;
 import kg.megacom.students1.models.Teacher;
 import kg.megacom.students1.models.dto.LessonDto;
@@ -53,5 +54,10 @@ private  final LessonMapper lessonMapper;
     @Override
     public void deleteLesson(Long id) {
        lessonRepo.delete(lessonRepo.findById(id).get());
+    }
+
+    @Override
+    public List<Lesson> findLessonsByGroup(Group group) {
+return lessonRepo.findAllByGroupOrderById(group);
     }
 }

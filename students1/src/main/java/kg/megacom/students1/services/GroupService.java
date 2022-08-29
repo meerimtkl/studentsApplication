@@ -22,4 +22,6 @@ public interface GroupService {
     Group updateGroup(Long id,    String name);
     void deleteGroup(Long id);
     Group create(GroupRequest groupRequest);
+    Group findByID(Long id);
+
 }

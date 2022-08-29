@@ -81,10 +81,12 @@ public class GroupServiceImpl implements GroupService {
         if (course.getDuration() <= 0)
             throw new RuntimeException("Длительность не может быть меньше или равно нулю!");
         List<Date> lessonDates = getLessonsDates(groupRequest.getDays(), course.getDuration(), groupRequest.getStartDate());
-        Date maxDate = lessonDates
-                .stream()
-                .max((a, b) -> (a.compareTo(b)))
-                .get();
+   //     Date maxDate = lessonDates
+        //        .stream()
+              //  .max((a, b) -> (a.compareTo(b)))
+              //  .get();
+        Date minDate=lessonDates.get(0);
+        Date maxDate=lessonDates.get(lessonDates.size()-1);
         Group group = new Group();
         group.setCourse(course);
         group.setStartDate(groupRequest.getStartDate());
@@ -108,6 +110,11 @@ public class GroupServiceImpl implements GroupService {
         lessonRepo.saveAll(lessons);
         return group;
 
+    }
+
+    @Override
+    public Group findByID(Long id) {
+        return groupRepo.findById(id).orElseThrow(()->new RuntimeException("Группа не найдена!"));
     }
 
     private List<Date> getLessonsDates(List<Day> days, int duration, Date startDate) {

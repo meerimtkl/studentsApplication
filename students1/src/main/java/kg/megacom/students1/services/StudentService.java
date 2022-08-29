@@ -11,9 +11,9 @@ public interface StudentService {
     StudentDto createStudent(Student student);
     List<StudentDto> findAll();
 
-  //   Student update(Long id,String title);
+    Student update(Long id,String title);
 
-  //  Student delete(Long id);
-   /// List<Student> findAllNotDeleted();
-
+    Student delete(Long id);
+    List<Student> findAllNotDeleted();
+    Student findById(Long id);
 }

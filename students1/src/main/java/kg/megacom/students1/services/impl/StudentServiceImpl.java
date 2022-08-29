@@ -39,18 +39,18 @@ public class StudentServiceImpl implements StudentService {
 
 
     }
-/*
+
     @Override
     public Student update(Long id, String title) {
         //Optional<Student> student=  studentRepo.findById(id);
-//  student.get().setTitle(title);
-//   return studentRepo.save(student.get());
+  //student.get().setTitle(title);
+ // return studentRepo.save(student.get());
         studentRepo.update(id, title);
 
 return studentRepo.findById(id).get();
     }
-*/
-    /*@Override
+
+    @Override
     public Student delete(Long id){
     //    studentRepo.deleteById(id);
     //return studentRepo.findById(id).get();
@@ -58,14 +58,20 @@ return studentRepo.findById(id).get();
    // studentRepo.delete(studentRepo.findById(id).get());
 
         Student student=studentRepo.findById(id).get();
-      //  student.setDeleted(true);
+       student.setDeleted(true);
         studentRepo.save(student);
         return studentRepo.findById(id).get();
 
-    }*/
+    }
 
-//    @Override
-//    public List<Student> findAllNotDeleted() {
-//        return studentRepo.findAllByIsDeletedIsFalse();
-//    }
+  @Override
+   public List<Student> findAllNotDeleted() {
+     return studentRepo.findAllByIsDeletedIsFalse();
+ }
+
+    @Override
+    public Student findById(Long id) {
+        return studentRepo.findById(id).orElseThrow(()->new RuntimeException("Студент не найден!"));
+
+    }
 }

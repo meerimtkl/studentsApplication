@@ -12,14 +12,14 @@ import java.util.List;
 
 @Repository
 public interface StudentRepo extends JpaRepository<Student,Long> {
-    //@Transactional
-   // @Modifying(clearAutomatically = true)
-  //  @Query(value = "update students set title =?2 where id=?1", nativeQuery = true)
-    //void update(@Param (" id")Long id, @Param("title") String title);
+    @Transactional
+    @Modifying(clearAutomatically = true)
+    @Query(value = "update students set title =?2 where id=?1", nativeQuery = true)
+    void update(@Param (" id")Long id, @Param("title") String title);
 
 
-    //    @Query(value = "select * from students where is_deleted = false ", nativeQuery = true)
-    //List<Student> findAllByIsDeletedIsFalse();
+       @Query(value = "select * from students where is_deleted = false ", nativeQuery = true)
+    List<Student> findAllByIsDeletedIsFalse();
 
 
 
